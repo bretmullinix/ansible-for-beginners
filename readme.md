@@ -69,4 +69,74 @@ environment.  Notice how ansible is not present.
 1. Run `pip install ansible==2.9`.  The command installs **ansible 2.9** in the
 virtual environment
 1. Run `pip list` to confirm **ansible 2.9** is installed.
-1. 
+
+Ansible requires an **inventory** file.  An **inventory** file is used to
+list the servers that you intend to run your ansible commands against.
+The servers are typically under a **group** or **groups**.  In our case,
+we will be using the **all** group.
+
+1. mkdir inventory
+1. vi inventory/my_first_inventory
+1. Copy the following content into the file:
+
+    ```
+    [all]
+    my_vm ansible_host=192.168.10.15
+    ```
+   
+1. Replace the ip address with your vm ip address.
+1. Save the file.
+1. vi ansible.cfg
+1. Under the **[defaults]** section, add the following line:
+
+    ```
+    inventory = ./inventory
+    remote_user = root
+    ask_pass = false 
+    ask_sudo_pass = false
+    private_key_file = ./my-key
+    ```
+   
+    In the line above, we are doing the following:
+    
+    - **inventory** = specifying the inventory directory to
+    find all the inventory files.  If you had more than one
+    inventory file, you could add them to this directory and ansible
+    would allow you to specify any server or group(s) listed in any of the files.
+    - **remote_user** = the user on the remote machine you
+    plan to login as using ssh.
+    - **ask_user** = if set to true, before you run an ansible command(s),
+    the ansible program will prompt you for a password.  Since we are going to
+    be using a private key file, we won't need a password prompt on ssh
+    login.
+    - **ask_sudo_pass** = if set to true, before any privileged ansible
+    command(s) can be run, the ansible program
+    will prompt you for a password. If your user requires a
+    password when running a **sudo** command, you will need to set this to true.
+    - **private_key_file** = the private key file that is used to login using
+    ssh.    
+    
+### Run an Ansible Command
+
+The format to run an ansible command after creating the configuration above
+is using the following syntax:
+
+**ansible [group or server] -m [module to run] -a '[arguments for module]'**
+
+Sections to replace above in order to run a command:
+
+- **[group or server name]** = the group or server defined in one of your
+inventory files.
+- **[module to run]** = the ansible module to run
+- **[arguments for module]** = the ansible module arguments
+
+For example, to get the "id" of the user running the ansible commands
+on the remote server(s) run the following:
+
+**ansible all -m command -a 'id'**
+
+The command above says to run against the **all** group of servers using
+the **command** module with an argument of **id**.
+
+
+
