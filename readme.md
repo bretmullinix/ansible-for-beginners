@@ -1,6 +1,6 @@
 # Working with Ansible
 
-Last updated: 06.09.2020
+Last updated: 06.11.2020
 
 ## Purpose
 
