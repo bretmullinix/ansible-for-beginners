@@ -21,7 +21,7 @@ Windows 7 or newer.
 You can create your VM anyway you want.  
 
 One option is to use Terraform to create an Amazon EC2 instance (VM).
-I have instructions at setting up your environment in the
+I have instructions on setting up your environment in the
 [terraform for beginners git repo](https://github.com/bretmullinix/terraform-for-beginners).
 In the repo be sure to follow the instructions in the
 [readme.md](https://github.com/bretmullinix/terraform-for-beginners/blob/master/readme.md)
