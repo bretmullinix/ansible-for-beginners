@@ -16,6 +16,18 @@ Fedora 27 or newer.
 
 Windows 7 or newer.
 
+### A Running VM
+
+You can create your VM anyway you want.  
+
+One option is to use Terraform to create an Amazon EC2 instance (VM).
+I have instructions at setting up your environment in the
+[terraform for beginners git repo](https://github.com/bretmullinix/terraform-for-beginners).
+In the repo be sure to follow the instructions in the
+[readme.md](https://github.com/bretmullinix/terraform-for-beginners/blob/master/readme.md)
+and the instructions in the
+[ about how to inject your private key into an ec2 instance](https://github.com/bretmullinix/terraform-for-beginners/tree/master/injecting-your-ssh-key-into-ec2-instance).
+
 ### Installation
 
 #### Installing Python 3 on Windows
@@ -57,5 +69,4 @@ environment.  Notice how ansible is not present.
 1. Run `pip install ansible==2.9`.  The command installs **ansible 2.9** in the
 virtual environment
 1. Run `pip list` to confirm **ansible 2.9** is installed.
-
-Under Construction....
+1. 
