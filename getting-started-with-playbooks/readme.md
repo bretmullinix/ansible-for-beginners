@@ -42,8 +42,9 @@ and the instructions in the
     - **ansible.cfg**: The ansible configuration file used to configure
     the location of your inventory and other preferences for your playbook(s)
     in the current directory and below.
-    - **inventory**: The directory contains all the inventory files
-    that define servers that can be a target for your playbook(s)
+    - **inventory**: The directory contains all the inventory files.
+     The inventory files define the servers and/or groups
+     that can be a target for your playbook(s)
     
 1.  Run `cat ansible.cfg | grep -v '^$' | grep -v '^#'`.  You will get
 the following output:
