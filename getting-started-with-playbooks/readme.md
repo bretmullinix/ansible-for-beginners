@@ -89,7 +89,7 @@ correspond to the ip of your VM.
      tasks:
      - name: Print the Running Users Id
        command:
-         args: id
+         argv: id
      - name: Install the Apache HTTP Server
        yum:
          name: httpd
