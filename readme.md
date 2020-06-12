@@ -138,5 +138,10 @@ on the remote server(s) run the following:
 The command above says to run against the **all** group of servers using
 the **command** module with an argument of **id**.
 
+All artifacts are located [here](./getting-started).
+
+To continue learning about Ansible, take a look at
+[getting started with playbook](./getting-started-with-playbooks).
+
 
 
