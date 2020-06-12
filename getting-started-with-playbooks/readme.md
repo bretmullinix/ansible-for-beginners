@@ -134,3 +134,5 @@ debugging.
 playbook will check the **id** of the logged in user on the server(s) and then
 install **httpd** if it does not exist.  You may add **-v**, **-vv**, **-vvv**,
 or **-vvvv** to show more and more detailed output for debugging.
+
+All resulting playbook file is in the current directory.
