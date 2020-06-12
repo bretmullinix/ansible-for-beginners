@@ -100,34 +100,34 @@ correspond to the ip of your VM.
    
    The definition of the above **playbook**:
    
-   - **My First Playbook**: The name of your playbook.
+   - **My First Playbook** = The name of your playbook.
    
-   - **hosts**: The server(s) or group(s) to be the target servers for the
+   - **hosts** = The server(s) or group(s) to be the target servers for the
    playbook.  In this case, the **all** group of server(s) are the target(s)
    of the playbook. The **all** group is defined in the
     **./inventory/my_first_inventory** file.
    
-   - **tasks** : Marking the start of defining **tasks**.  A **task**
+   - **tasks** = Marking the start of defining **tasks**.  A **task**
    is a definition of the name of the task (optional), the module to run,
    and the required arguments for the module.
 
-   - **Print the Running Users Id**: The first task to run. The task runs 
+   - **Print the Running Users Id Task ** = The task runs 
    the **command** module with the argument **id**.
    The **command** module runs any arbitrary command(s) listed
    in the arguments section, in this case the **id** command.
    
-   - The second task runs the **yum** module with the arguments 
-   **name:  httpd** and **state: present**.  The **yum** module looks for
-   the package listed under the **name** argument and installs the package
-   if the package is not installed.  Otherwise, the **yum** module does nothing
-   to the target server(s).
+   - ** Install the Apache HTTP Server Task ** = The task runs the
+   **yum** module with the arguments **name:  httpd** and **state: present**.
+   The **yum** module looks for the package listed under the **name**
+   argument and installs the package if the package is not installed.
+   Otherwise, the **yum** module does nothing to the target server(s).
    
 1. Run ` ansible-playbook --syntax-check my-first-playbook.yaml` to make
 sure your ansible playbook is syntactically correct.  You may add **-v**,
 **-vv**, **-vvv**, or **-vvvv** to show more and more detailed output for
 debugging. 
 
-    :eyes: If you get an error, make sure that your spacing is correct in
+    :eyes: If you get an error, make sure your spacing is correct in
     the playbook.  All child tags must be indented by 2 spaces.
 
 1. Run `ansible-playbook my-first-playbook.yaml` to run the playbook.  The
