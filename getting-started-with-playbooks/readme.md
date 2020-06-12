@@ -13,7 +13,7 @@ to have an understanding of how to set up your Ansible environment
 and run adhoc Ansible commands before continuing.
 
 Please setup your environment if you don't have access to Ansible by
-following the instructions [here](../readme.md)
+following the instructions [here](../readme.md).
 
 ### A Running VM
 
@@ -45,7 +45,7 @@ and the instructions in the
     - **inventory**: The directory contains all the inventory files
     that define servers that can be a target for your playbook(s)
     
-1.  Run `cat ansible.cfg | grep -v '^$' | grep -v '^#'.  You will get
+1.  Run `cat ansible.cfg | grep -v '^$' | grep -v '^#'`.  You will get
 the following output:
 
     ![ansible.cfg configuration](../images/getting-started-with-playbooks-ansible-cfg-contents.png)
