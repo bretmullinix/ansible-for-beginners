@@ -95,6 +95,8 @@ correspond to the ip of your VM.
          name: httpd
          state: present
    ```
+   :warning: Spaces matter in playbooks.  All child tags in `yaml` must
+   be indented by 2 spaces from the parent tag.
    
    The definition of the above **playbook**:
    
@@ -123,7 +125,10 @@ correspond to the ip of your VM.
 1. Run ` ansible-playbook --syntax-check my-first-playbook.yaml` to make
 sure your ansible playbook is syntactically correct.  You may add **-v**,
 **-vv**, **-vvv**, or **-vvvv** to show more and more detailed output for
-debugging.
+debugging. 
+
+    :eyes: If you get an error, make sure that your spacing is correct in
+    the playbook.  All child tags must be indented by 2 spaces.
 
 1. Run `ansible-playbook my-first-playbook.yaml` to run the playbook.  The
 playbook will check the **id** of the logged in user on the server(s) and then
