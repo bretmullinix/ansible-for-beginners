@@ -111,12 +111,12 @@ correspond to the ip of your VM.
    is a definition of the name of the task (optional), the module to run,
    and the required arguments for the module.
 
-   - **Print the Running Users Id Task ** = The task runs 
+   - **Print the Running Users Id** Task = The task runs 
    the **command** module with the argument **id**.
    The **command** module runs any arbitrary command(s) listed
    in the arguments section, in this case the **id** command.
    
-   - ** Install the Apache HTTP Server Task ** = The task runs the
+   - **Install the Apache HTTP Server** Task = The task runs the
    **yum** module with the arguments **name:  httpd** and **state: present**.
    The **yum** module looks for the package listed under the **name**
    argument and installs the package if the package is not installed.
@@ -134,5 +134,3 @@ debugging.
 playbook will check the **id** of the logged in user on the server(s) and then
 install **httpd** if it does not exist.  You may add **-v**, **-vv**, **-vvv**,
 or **-vvvv** to show more and more detailed output for debugging.
-
-
