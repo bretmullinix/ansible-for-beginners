@@ -104,7 +104,7 @@ correspond to the ip of your VM.
     against. The **all** group is defined in the
     **./inventory/my_first_inventory** file.
    
-   - **tasks:** : Marking the start of defining **tasks**.  A **task**
+   - **tasks** : Marking the start of defining **tasks**.  A **task**
    is a definition of the name of the task (optional), the module to run,
    and the required arguments for the module.
 
