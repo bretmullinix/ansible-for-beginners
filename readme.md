@@ -91,7 +91,7 @@ we will be using the **all** group.
 
     ```
     inventory = ./inventory
-    remote_user = root
+    remote_user = maintuser
     ask_pass = false 
     ask_sudo_pass = false
     private_key_file = ./my-key
