@@ -1,6 +1,6 @@
 # Working with Ansible Playbooks
 
-Last updated: 06.12.2020
+Last updated: 06.14.2020
 
 ## Purpose
 
@@ -8,12 +8,12 @@ The purpose of this document is to show how to work with Ansible playbooks.
 
 ## Prerequisites
 
-Please read the instructions in the [readme.md](../readme.md)
+Please read the instructions in the [readme.md](../t1-getting-started/readme.md)
 to have an understanding of how to set up your Ansible environment
 and run adhoc Ansible commands before continuing.
 
 Please setup your environment if you don't have access to Ansible by
-following the instructions [here](../readme.md).
+following the instructions [here](../t1-getting-started/readme.md).
 
 ### A Running VM
 
@@ -32,7 +32,7 @@ and the instructions in the
 1. Open up a terminal.
 1. mkdir getting-started-with-playbooks
 1. cd getting-started-with-playbooks
-1. Copy the content [here](../getting-started) to the current directory.
+1. Copy the content [here](../t1-getting-started) to the current directory.
 1. Run `tree` in your terminal.  You should see the following output:
 
     ![tree output](../images/getting-started-with-playbooks-initial-dir-tree-structure.png)
@@ -75,6 +75,19 @@ the following output:
         
       - **private_key_file** = The private key file that is used to login using
         ssh.
+      
+      - **become** = If set to true, the environment is run in privileged mode.
+      
+      - **become_method** = The method to become the privileged user.  In
+      this case we are using the **sudo** method.
+      
+      - **become_user** = The privileged user to run as.  In this case
+      we are using the **root** user.
+      
+      - **become_ask_pass** = If set to true, when running Ansible, the
+      Ansible program will prompt you for the privileged user's password.  In our
+      case the login user does not require a password to change to the
+      privileged user.
 
 1. Copy your **my_key** private key file for your vm to this directory.
 1. Edit the **./inventory/my_first_inventory** file and change the ip to
