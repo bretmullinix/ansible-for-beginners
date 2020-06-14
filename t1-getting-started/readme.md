@@ -22,11 +22,11 @@ You can create your VM anyway you want.
 
 One option is to use Terraform to create an Amazon EC2 instance (VM).
 I have instructions on setting up your environment in the
-[terraform for beginners git repo](https://github.com/bretmullinix/terraform-for-beginners).
+[terraform for beginners git repo](https://github.com/bretmullinix/terraform-for-beginners/t1-getting-started).
 In the repo be sure to follow the instructions in the
-[readme.md](https://github.com/bretmullinix/terraform-for-beginners/blob/master/readme.md)
+[readme.md](https://github.com/bretmullinix/terraform-for-beginners/blob/master/t1-getting-started/readme.md)
 and the instructions in the
-[ about how to inject your private key into an ec2 instance](https://github.com/bretmullinix/terraform-for-beginners/tree/master/injecting-your-ssh-key-into-ec2-instance).
+[ about how to inject your private key into an ec2 instance](https://github.com/bretmullinix/terraform-for-beginners/tree/master/t1-injecting-your-ssh-key-into-ec2-instance).
 
 ### Installation
 
@@ -141,7 +141,7 @@ the **command** module with an argument of **id**.
 All artifacts are located in the **getting-started** folder.
 
 To continue learning about Ansible, take a look at
-[getting started with playbook](./getting-started-with-playbooks).
+[getting started with playbook](../t2-using-playbooks).
 
 
 
