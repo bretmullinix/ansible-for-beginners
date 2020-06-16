@@ -1,10 +1,10 @@
-# Working with Ansible Playbooks
+# Working with Ansible Variables
 
 Last updated: 06.16.2020
 
 ## Purpose
 
-The purpose of this document is to show how to work with Ansible playbooks.
+The purpose of this document is to show how to work with Ansible variables.
 
 ## Prerequisites
 
