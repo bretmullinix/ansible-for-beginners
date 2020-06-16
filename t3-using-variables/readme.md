@@ -1,6 +1,6 @@
 # Working with Ansible Playbooks
 
-Last updated: 06.14.2020
+Last updated: 06.16.2020
 
 ## Purpose
 
@@ -14,6 +14,9 @@ and run adhoc Ansible commands before continuing.
 
 Please setup your environment if you don't have access to Ansible by
 following the instructions [here](../t1-getting-started/readme.md).
+
+A working knowledge of Ansible playbooks.  If you haven't, please go
+[here](../t2-using-playbooks) to learn more.
 
 ### A Running VM
 
@@ -31,8 +34,8 @@ and the instructions in the
 ### Instructions
 
 1. Open up a terminal.
-1. mkdir getting-started-with-playbooks
-1. cd getting-started-with-playbooks
+1. mkdir t3-using-variables
+1. cd t3-using-variables
 1. Copy the content [here](../t1-getting-started) to the current directory.
 1. Run `tree` in your terminal.  You should see the following output:
 
@@ -93,54 +96,70 @@ the following output:
 1. Copy your **my_key** private key file for your vm to this directory.
 1. Edit the **./inventory/my_first_inventory** file and change the ip to
 correspond to the ip of your VM.
-1. Create a file called **my-first-playbook.yml**
+1. Create a file called **playbook.yaml**
 1. Add the following content to the file:
 
     ```yaml
    ---
-   - name: My First Playbook
-     hosts: all
-     tasks:
-     - name: Print the Running Users Id
-       command:
-         argv: id
-     - name: Install the Apache HTTP Server
-       yum:
-         name: httpd
-         state: present
+   - name: Playbook with Variables
+      hosts: all
+      tasks:
+      - name: Print the Purpose of the Server
+        debug:
+          msg:
+            - Purpose of your server:  "{{ var_server_purpose }}"
    ```
+   
+   The playbook is doing the following:
+   
+   1. Uses the **all** group of servers defined
+   in the **./inventory/my_first_inventory** file.
+   
+   1. Prints out a message to the console using the **debug** task.
+   
+   1. Prints out a message containing the purpose of the server.
+   
+   1.  Uses a variable called **var_server_purpose** to get the purpose
+   of the server.  The variable is going to be defined in the next steps.
+   
    :warning: Spaces matter in playbooks.  All child tags in `yaml` must
    be indented by 2 spaces from the parent tag.
    
    :star: You can get a definition and example of using an Ansible module
    by running **ansible-doc** [module_name].  Replacing the [module_name]
-   with an actual module.  An example is `ansible-doc command`.
-   
-   The definition of the above **playbook**:
-   
-   - **My First Playbook** = The name of your playbook.
-   
-   - **hosts** = The server(s) or group(s) to be the target servers for the
-   playbook.  In this case, the **all** group of server(s) are the target(s)
-   of the playbook. The **all** group is defined in the
-    **./inventory/my_first_inventory** file.
-   
-   - **tasks** = Marking the start of defining **tasks**.  A **task**
-   is a definition of the name of the task (optional), the module to run,
-   and the required arguments for the module.
+   with an actual module.  An example is `ansible-doc debug`.
 
-   - **Print the Running Users Id** Task = The task runs 
-   the **command** module with the argument **id**.
-   The **command** module runs any arbitrary command(s) listed
-   in the arguments section, in this case the **id** command.
-   
-   - **Install the Apache HTTP Server** Task = The task runs the
-   **yum** module with the arguments **name:  httpd** and **state: present**.
-   The **yum** module looks for the package listed under the **name**
-   argument and installs the package if the package is not installed.
-   Otherwise, the **yum** module does nothing to the target server(s).
-   
-1. Run ` ansible-playbook --syntax-check my-first-playbook.yaml` to make
+1. cd inventory
+1. mkdir **group-vars**
+1. cd **group-vars**
+1. mkdir **all**
+1. Create the file called **unencrypted-variables.yaml**
+1. Add the following content:
+
+    ```yaml
+    ---
+    var_server_purpose: "teaching"
+   ```
+
+1. Save the file.
+
+1. cd ../../..
+
+1. Run `tree`.  The output is below:
+
+    ![Group Vars Output](../images/group-vars-unencrypted.png)
+    
+    The output above shows we have the **unencrypted-variables.yaml** in
+    the **group_vars** directory.  The **group_vars** is at the same
+    level in the tree as your inventory file(s).  The **group_vars**
+    defines child folders or files that represent variables for a
+    group in your inventory.  In our case, we added an **all** folder
+    which represents variables declared for the **all** inventory group.
+    Inside the **all** folder, we defined the **unencrypted-variables.yaml**
+    and placed the **var_server_purpose** definition in the file.  By adding
+    the variable here, we have defined the variable for the **all** group.
+
+1. Run ` ansible-playbook --syntax-check playbook.yaml` to make
 sure your ansible playbook is syntactically correct.  You may add **-v**,
 **-vv**, **-vvv**, or **-vvvv** to show more and more detailed output for
 debugging. 
@@ -148,9 +167,45 @@ debugging.
     :eyes: If you get an error, make sure your spacing is correct in
     the playbook.  All child tags must be indented by 2 spaces.
 
-1. Run `ansible-playbook my-first-playbook.yaml` to run the playbook.  The
+1. Run `ansible-playbook playbook.yaml` to run the playbook.  The
 playbook will check the **id** of the logged in user on the server(s) and then
 install **httpd** if it does not exist.  You may add **-v**, **-vv**, **-vvv**,
 or **-vvvv** to show more and more detailed output for debugging.
 
-All resulting playbook file is in the current directory.
+1. cd group_vars/all
+1. encrypted-variables.yaml
+1. Add the following content:
+
+    ```yaml
+    ---
+    var_secret: See me if you can!!
+    ```
+1. Save the file
+
+1. Run `ansible-vault encrypt encrypted-variables.yaml`.
+
+1. You will be asked a vault password and asked to validate it.
+
+    :warning Remember your vault password.  You will need it
+    every time you run your playbook.
+
+1. cd ../../..
+
+1. vi playbook.yaml
+1. On the last line add the following content.
+The line should be indented to line up with the line above:
+
+    ```yaml
+           - Secret Variable: "{{ var_secret }}"
+   ```
+  
+1. Run ` ansible-playbook --syntax-check --ask-vault-pass playbook.yaml` 
+
+    The argument **--ask-vault-pass** tells Ansible to ask for your vault
+    secret for any encrypted variables.  Enter your vault password you
+    entered when you encrypted the **encrypted-variables.yaml** file.
+
+1. When you receive no errors, run
+`ansible-playbook --ask-vault-pass playbook.yaml`
+
+All files created in the tutorial are in the current directory.

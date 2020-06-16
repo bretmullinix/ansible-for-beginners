@@ -138,6 +138,10 @@ on the remote server(s) run the following:
 The command above says to run against the **all** group of servers using
 the **command** module with an argument of **id**.
 
+:star: You can get a definition and example of using an Ansible module
+by running **ansible-doc** [module_name].  Replacing the [module_name]
+with an actual module.  An example is `ansible-doc command`.
+
 All artifacts are located in the **getting-started** folder.
 
 To continue learning about Ansible, take a look at

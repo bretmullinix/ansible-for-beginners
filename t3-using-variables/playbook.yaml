@@ -1,0 +1,9 @@
+---
+- name: Playbook with Variables
+  hosts: all
+  tasks:
+  - name: Print the Purpose of the Server
+    debug:
+      msg:
+        - Purpose of your server:  "{{ var_server_purpose }}"
+        - Secret Variable: "{{ var_secret }}"
