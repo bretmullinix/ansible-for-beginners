@@ -173,7 +173,7 @@ install **httpd** if it does not exist.  You may add **-v**, **-vv**, **-vvv**,
 or **-vvvv** to show more and more detailed output for debugging.
 
 1. cd group_vars/all
-1. encrypted-variables.yaml
+1. vi encrypted-variables.yaml
 1. Add the following content:
 
     ```yaml
@@ -186,7 +186,7 @@ or **-vvvv** to show more and more detailed output for debugging.
 
 1. You will be asked a vault password and asked to validate it.
 
-    :warning Remember your vault password.  You will need it
+    :warning: Remember your vault password.  You will need it
     every time you run your playbook.
 
 1. cd ../../..
