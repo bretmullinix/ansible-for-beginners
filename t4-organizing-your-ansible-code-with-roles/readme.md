@@ -1,10 +1,10 @@
-# Working with Ansible Variables
+# Working with Ansible Roles
 
 Last updated: 06.16.2020
 
 ## Purpose
 
-The purpose of this document is to show how to work with Ansible variables.
+The purpose of this document is to show how to work with Ansible roles.
 
 ## Prerequisites
 
