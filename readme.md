@@ -36,5 +36,5 @@ The tutorials in this repo are as follows:
     can be refactored into Ansible roles.  The purpose of this tutorial is to
     show how to refactor your variables and playbooks into an Ansible role.    
     The tutorial is located in the
-    [**t4-organizing-your-ansible-code-with-roles](./t4-organizing-your-ansible-code-with-roles )
+    [**t4-organizing-your-ansible-code-with-roles**](./t4-organizing-your-ansible-code-with-roles )
     folder.
