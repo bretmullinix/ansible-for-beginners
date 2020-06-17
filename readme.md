@@ -27,3 +27,14 @@ The tutorials in this repo are as follows:
     Adds to tutorial 2 by showing how to work with variables in a playbook.
     The tutorial is located in the
     [**t3-using-variables**](./t3-using-variables) folder.
+
+1. **Organizing Your Ansible Code With Roles**
+
+    As you build for your Ansible project(s), you will recognize a proliferation
+    of playbooks and variables, and soon, you will have a hard time recognizing 
+    what your ansible code is doing.  To solve this problem, the playbooks
+    can be refactored into Ansible roles.  The purpose of this tutorial is to
+    show how to refactor your variables and playbooks into an Ansible role.    
+    The tutorial is located in the
+    [**t4-organizing-your-ansible-code-with-roles](./t4-organizing-your-ansible-code-with-roles )
+    folder.

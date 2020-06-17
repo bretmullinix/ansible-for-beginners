@@ -208,4 +208,48 @@ The line should be indented to line up with the line above:
 1. When you receive no errors, run
 `ansible-playbook --ask-vault-pass playbook.yaml`
 
+1. cd inventory
+1. mkdir host_vars
+1. cd host_vars
+1. mkdir my_vm
+1. vi unencrypted-variables.yaml
+1. Add the following to the file:
+
+    ```yaml
+    ---
+    var_host_name: "my_vm.example.com"
+    ```
+
+1. cd ../../..
+1. Run the command `tree`
+
+    Below is the output of **tree**:
+    
+    ![tree output](../images/host-vars-unencrypted.png)
+    
+    The **host-vars** directory contains all the server
+    variables.  Within the **host-vars** directory, a
+    folder can be named for each server.  In the **my_vm**
+    folder, we have all the variables for the server called
+    **my_vm**.
+    
+1.  vi playbook.yaml
+1.  Add the following line to output a host variable:
+
+    ```yaml
+        - Server Variable: "{{ var_host_name }}"
+    ```  
+
+1. Run `ansible-playbook --syntax-check --ask-vault-pass playbook.yaml` 
+
+    We run the above command every time we add new content to check the
+    syntax of our changes to the playbook.
+
+1. When you receive no errors, run
+`ansible-playbook --ask-vault-pass playbook.yaml`
+
+    The output should be similar to the following:
+    
+    ![t3 output](../images/output-t3-using-variables.png)
+
 All files created in the tutorial are in the current directory.
