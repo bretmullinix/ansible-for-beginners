@@ -5,6 +5,14 @@ Last updated: 06.16.2020
 ## Purpose
 
 The purpose of this document is to show how to work with Ansible roles.
+Ansible Roles allow you to organize and separate your playbooks and variables
+so that maintenance does not become a burden over time.  Maintainers need
+only to look at the Ansible Role documentation and standardized
+structure to figure out how an application works.  
+Also, most of the standardized structure can be created for the Ansible developer
+using **Ansible Galaxy**.  An Ansible developer just has to execute one command
+to form the initial standardized Ansible Role.  Then, the developer just modifies
+the section of the structure needed to complete the Ansible Role. 
 
 ## Prerequisites
 
@@ -20,6 +28,7 @@ A working knowledge of Ansible playbooks.  If you haven't, please go
 
 A working knowledge of Ansible variables.  If you haven't please go
 [here](../t3-using-variables) to learn more.
+
 
 ### A Running VM
 
@@ -104,7 +113,58 @@ the following output:
       privileged user.
 
 1. Copy your **my_key** private key file for your vm to this directory.
+
 1. Edit the **./inventory/my_first_inventory** file and change the ip to
 correspond to the ip of your VM.
+
+#### Adding the new Ansible Role
+1. Run `ansible-galaxy init my-first-role`
+1. Run `tree my-first-role`
+
+    The following shows the results of the above command:
+    
+    ![My First Role](../images/my-first-role-tree.png)
+
+    1. **default** = The folder contains all the **variables** that are most
+    likely to be changed by an Ansible developer that use the role.  The
+    folder can have many files that are combined when the role is executed.
+    
+    1. **files** = The folder contains any files that the role needs
+    to execute.  For example, the role runs a module that
+    transfers a file to the target server(s).  The **file to be
+    transferred** would exist in the **files** folder.
+    
+    1. **handlers** = The folder contains the Ansible modules that run
+    after an execution of the role.  By default, the **handlers**
+    only execute after a **successful** execution of the role, but can
+    be changed to execute regardless of **success**.
+    
+    1. **meta** = The folder contains information on the **dependent** roles
+    needed for the role to run and any other information the users or systems
+    need to know about the role.
+    
+    1. **tasks** = The folder containing the **main.yml** file.  By default, the
+    **main.yml** contains all the **modules** that are run when the role is
+    executed.  After the **main.yml** is successfully executed, any **handlers**
+    are executed.
+    
+    1. **templates** = The folder contains **Jinja** templates.  The templates
+    are files that contain Ansible logic.  During the role
+    execution, the logic produces a **generated** file that
+    is used in the execution of the modules.  An example of a **template**
+    file is one with logic that outputs a file based on variables populated
+    during the execution of a module.
+    
+    1. **tests** = The folder contains tests that can be run to validate
+    that the role will execute as is intended.  The default inventory and
+    tests can be run, or you can use something a little more powerful.  One
+    powerful framework is **Ansible Molecule**. **Ansible Molecule**
+    can be used to generate and run these tests in different environments.
+    For instance, Ansible **molecule** can spin up a **Docker** container
+    and run your role against the **Docker** container with very little setup.
+    
+    1. **vars**  = The folder contains all the **variables** used by
+    the role that are not likely to be changed by the developers.  The
+    folder can have many files that are combined when the role is executed.
 
 #### :construction: Under construction....
