@@ -118,6 +118,8 @@ the following output:
 correspond to the ip of your VM.
 
 #### Adding the new Ansible Role
+1. mkdir roles
+1. cd roles
 1. Run `ansible-galaxy init my-first-role`
 1. Run `tree my-first-role`
 
@@ -166,5 +168,22 @@ correspond to the ip of your VM.
     1. **vars**  = The folder contains all the **variables** used by
     the role that are not likely to be changed by the developers.  The
     folder can have many files that are combined when the role is executed.
+    
+1.  When you generate your role for this tutorial, you will not need
+all your folders in **my-test-role** role. Please delete the **handlers**,
+**files**, **templates**, and **tests** directories. 
+
+    1. cd roles
+    2. cd my-test-role
+    3. rm -rf handlers files templates tests
+    4. cd ..  
+
+1. Run `tree my-test-role`
+
+    The output of the tree command is below.  Notice how we simplified the
+    maintenance of the role.  We only kept what was needed for the role.
+    
+    ![My First Role Pruned](../images/my-first-role-tree-pruned-for-needs.png)
+
 
 #### :construction: Under construction....
