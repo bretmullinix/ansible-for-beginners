@@ -1,2 +1,7 @@
 ---
-# tasks file for my-first-role
+- name: Print the Purpose of the Server
+  debug:
+    msg:
+      - Purpose of your server:  "{{ var_server_purpose }}"
+      - Secret Variable: "{{ var_secret }}"
+      - Server Variable: "{{ var_host_name }}"

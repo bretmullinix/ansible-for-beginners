@@ -184,6 +184,97 @@ all your folders in **my-test-role** role. Please delete the **handlers**,
     maintenance of the role.  We only kept what was needed for the role.
     
     ![My First Role Pruned](../images/my-first-role-tree-pruned-for-needs.png)
+1. cd ..
+1. cp playbook.yaml roles/my-first-role/tasks/main.yml
+1. cd roles/my-first-role/tasks
+1. vi main.yml
+1. Remove the following content:
 
+    ```yaml
+    - name: Playbook with Variables
+      hosts: all
+      tasks:
+    ```
+    
+1. The content below is what you should have left.  Note the alignment
+of the task to the far left.  You should have no spaces before the first
+line.
 
-#### :construction: Under construction....
+    ```yaml
+    ---
+    - name: Print the Purpose of the Server
+      debug:
+        msg:
+          - Purpose of your server:  "{{ var_server_purpose }}"
+          - Secret Variable: "{{ var_secret }}"
+          - Server Variable: "{{ var_host_name }}"
+
+    ```
+
+1. Save your file.
+
+1. Next we need to move the variables to the role. The steps are below:
+
+    1. cd ../../..
+    1. mkdir roles/my-first-role/defaults/main
+    1. cp inventory/group_vars/all/*.yaml roles/my-first-role/defaults/main/
+    1. rm roles/my-first-role/defaults/main.yml
+    1. rm inventory/group_vars/all/*.yaml
+    
+        In the steps above, we moved into the tutorial folder, copied the
+        unencrypted-variables.yaml and encrypted-variables.yaml to the
+        roles/my-first-role/defaults/main/ folder.  Next, we removed the 
+        **main.yml** from the role **defaults** directory as it won't be
+        needed.
+        
+1. Run `tree ../t4-organizing-your-ansible-code-with-roles`
+
+     The output of the tree command is below:
+     
+     ![Output t4 after variables moved to role](../images/t4-tree-after-addition-of-variables.png)
+   
+     Notice how we have two separate variable files in the
+     **defaults** directory.  One for the unencrypted variables and another
+     for encrypted.  Also, notice we removed the group variable files under
+     the all group because we are defining them in the role now.
+     
+     Also, notice that we did not move any variables in the **host_vars**
+     directory because they pertain to host specific variables.  However,
+     it is good practice defining the default value of the 
+     host variables in the **defaults** directory
+     of the role.  We will do this next.
+
+1. cd t4-organizing-your-ansible-code-with-roles
+1. cat inventory/host_vars/my_vm/unencrypted-variables.yaml
+1. Copy "var_host_name"
+1. vi roles/my-first-role/defaults/main/unencrypted-variables.yaml
+1. Add the following line `var_host_name: 'None'`.
+
+    By setting the variable to the value of **None**, you are telling the
+    user they should set a default value for the variable for the
+    appropriate context. In this case, the default value should be in the
+    **host_vars** under the **my_vm** folder because the variable
+    should be given different values based on the server.
+    Note that the server folder **my_vm** represents
+    the **my_vm** server in the Ansible inventory.
+
+1. Save the file.
+1. rm playbook.yaml
+1. vi playbook.yaml
+1. Copy the following content into the playbook.yaml:
+
+    ```yaml
+    ---
+    - name: Playbook with Variables
+      hosts: all
+      tasks:
+        - import_role:
+            name: my-first-role
+    ```
+1. Save the file.
+1. Run `ansible-playbook --syntax-check --ask-vault-pass playbook.yaml`
+1. If you get no error, run `ansible-playbook --ask-vault-pass playbook.yaml`
+
+    Below is the expected output:
+    
+    ![t4 expected output](../images/t4-output.png)
