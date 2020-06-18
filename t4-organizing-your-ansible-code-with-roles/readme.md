@@ -236,7 +236,7 @@ line.
      Notice how we have two separate variable files in the
      **defaults** directory.  One for the unencrypted variables and another
      for encrypted.  Also, notice we removed the group variable files under
-     the all group because we are defining them in the role now.
+     the **all** group because we are defining them in the role now.
      
      Also, notice that we did not move any variables in the **host_vars**
      directory because they pertain to host specific variables.  However,
