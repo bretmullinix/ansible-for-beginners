@@ -1,6 +1,6 @@
 # Working with Ansible
 
-Last updated: 06.11.2020
+Last updated: 06.20.2020
 
 ## Purpose
 
@@ -11,10 +11,6 @@ The purpose of this document is to show how to install and work with ansible.
 ### For Fedora users
 
 Fedora 27 or newer.
-
-### For Windows users
-
-Windows 7 or newer.
 
 ### A Running VM
 
@@ -30,18 +26,9 @@ and the instructions in the
 
 ### Installation
 
-#### Installing Python 3 on Windows
-1. Download the executable for Python 3.8.0
-[here](https://www.python.org/ftp/python/3.8.0/python-3.8.0-amd64.exe).
-1. Run the executable.
-1. Open up a terminal
-1. Type `python3.8 --version`
-1. The output should show you are running Python 3.8.0.
-1. If you see a different version, you might have to set the **PATH** variable
-
 #### Installing Python 3 on Fedora
 1. Open up a terminal
-4. sudo dnf install python3.8
+1. sudo dnf install python3.8
 1. Type `python3.8 --version`
 1. The output should show you are running Python 3.8.0
 
@@ -57,17 +44,19 @@ python virtual environments.
     software for each virtual environment.
 
 1. Run `python3.8 -m venv venv_ansible`
-1. To activate your virtual environment on **Windows**, you run
-`./venv_ansible/Scripts/activate`
-1. To activate your virtual environment on **Fedora**, you run
-`source ./venv_ansible/bin/activate`
+1. Activate your virtual environment: `source ./venv_ansible/bin/activate`
+
+    :warning:  Always remember to activate your virtual environment, or you could be
+    making changes to the python installed on your system.  The changes could corrupt
+    the currently installed applications on the system.
+
 1. Run `python --version`.  This is the version of Python running in your
 virtual environment.
 1. Run `pip install --upgrade pip`
 1. Run `pip list`.  This should list the modules currently installed in your
 environment.  Notice how ansible is not present.
 1. Run `pip install ansible==2.9`.  The command installs **ansible 2.9** in the
-virtual environment
+virtual environment.
 1. Run `pip list` to confirm **ansible 2.9** is installed.
 
 Ansible requires an **inventory** file.  An **inventory** file is used to
@@ -146,6 +135,3 @@ All artifacts are located in the **getting-started** folder.
 
 To continue learning about Ansible, take a look at
 [getting started with playbook](../t2-using-playbooks).
-
-
-
