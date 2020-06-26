@@ -38,3 +38,12 @@ The tutorials in this repo are as follows:
     The tutorial is located in the
     [**t4-organizing-your-ansible-code-with-roles**](./t4-organizing-your-ansible-code-with-roles )
     folder.
+
+## Future Reading
+
+After you are finished with the tutorials above, try the following tutorials 
+to improve your **ansible** skills:
+
+1.  [Learning Ansible Molecule and Test Driven Design](https://github.com/bretmullinix/ansible-molecule-for-beginners)
+
+1.  [Using Ansible and Ansible Molecule to Install OpenShift and IDM on AWS](https://github.com/bretmullinix/openshift-idm-cluster-on-aws)
