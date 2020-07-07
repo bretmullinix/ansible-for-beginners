@@ -5,9 +5,9 @@ Last updated: 07.07.2020
 ## Purpose
 
 The purpose of this document is to show how to create Ansible modules.
-Sometimes the developer does not have a good Ansible module to leverage
+Sometimes a developer does not have a good Ansible module to leverage
 for his/her purposes.  In this case, writing their own Ansible module might
-make sense.T  
+make sense.
 
 ## Prerequisites
 
