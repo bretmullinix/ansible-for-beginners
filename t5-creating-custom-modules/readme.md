@@ -63,7 +63,7 @@ might have changed.
 1. Run `pip list`. You should see **ansible** with the version 2.9.
 1. Let's install Molecule.  Molecule provides us the capabilities of
 **Ansible Galaxy** and **Test Driven Design**.  Run `pip install molecule==3.0.4`
-1. Let's Install Ruby needed for custom ansible module.  Run `pip install gem`
+1. Let's Install Ruby needed for a custom ansible module.  Run `pip install gem`
 1. Let's Install **MarkDownLint**.  Run `gem install mdl`
 
 ## Instructions
