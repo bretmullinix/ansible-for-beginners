@@ -1,0 +1,8 @@
+---
+- name: Playbook to run a role
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Run the role
+      include_role:
+        name: custom_ansible_modules

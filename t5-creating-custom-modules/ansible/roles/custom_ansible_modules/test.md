@@ -38,15 +38,6 @@ The tutorials in this repo are as follows:
     The tutorial is located in the
     [**t4-organizing-your-ansible-code-with-roles**](./t4-organizing-your-ansible-code-with-roles )
     folder.
-    
-1. **Creating Custom Ansible Modules**
-
-    As you build your Ansible project(s), you will find a time when
-     **ansible** might not be the best place to store your code.  This might
-     be a time to create a custom ansible module.  The
-     tutorial is located in the 
-    [**t5-creating-custom-modules**](./t5-creating-custom-modules )
-    folder.
 
 ## Future Reading
 

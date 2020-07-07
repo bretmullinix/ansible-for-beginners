@@ -1,0 +1,9 @@
+---
+# tasks file for custom_ansible_modules
+- name: Print the role path
+  debug:
+    msg: "Your role path = {{ role_path }}"
+- name: List all the mark down problems for test.md
+  custom_markdown_lint:
+    name: "{{role_path }}/test.md"
+    action: problems

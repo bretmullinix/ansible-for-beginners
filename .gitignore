@@ -1,3 +1,4 @@
 .activate_rc
 *.retry
 my_key
+virtual_environments

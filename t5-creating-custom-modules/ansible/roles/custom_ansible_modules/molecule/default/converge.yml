@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include custom_ansible_modules"
+      include_role:
+        name: "custom_ansible_modules"
