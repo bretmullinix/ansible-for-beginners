@@ -406,6 +406,14 @@ modules.
         1. **files_or_directories** --> The file or directories to run the
         **mdl** command on.  The variable was declared above and is assigned
         the value of the **name** attribute from the ansible task.
+    
+    ```python
+       result['markdown_lint_problems'] = raw_output
+    ```
+   
+   The code above assigns the raw output of calling the markdown lint (mdl)
+   command to the dictionary key called **markdown_lint_problems**.  The dictionary
+   is the result sent back as the output to the ansible module.
       
     ```python
     no_failure = True
